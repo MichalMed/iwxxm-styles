@@ -1,0 +1,29 @@
+Styles:
+Style image must be uploaded to geoserver, otherwise it does not work (IDKY). It must be uploaded to DATA_DIR/workspaces/WORKSPACE_NAME/styles and referenced relatively in this position from SLD file.
+
+Conditions: https://docs.geoserver.geo-solutions.it/draft/edu/en/pretty_maps/style_points.html
+
+Line parameters: https://docs.geoserver.org/main/en/user/styling/sld/reference/linesymbolizer.html
+
+It is impossible to displace symbols, solution is to create images with offset at the bottom side with transparent background.
+From the docs:
+Symbol Positioning
+Graphic symbols are rendered so that the center of the graphic extent lies on the placement point (or points, in the case of repeated or tiled graphics). If it is desired to have a graphic offset from a point (such as a symbol which acts as a pointer) it is necessary to offset the visible portion of the graphic within the overall extent. For images this can be accomplished by extending the image with transparent pixels. For SVG graphics this can be done by surrounding the shape with an invisible rectangle with the desired relative position.
+
+Notes for specific layers:
+Turbulence style depends on the type and origin. Washington and London data are displayed differently, moreover it requires symbol based on type.
+Location of the symbols shall be computed beforehand.
+
+Cumulonimbus is hard, somehow symbols are oriented from the outside, not inside.
+We do not have enough info in data to display everything in information table. We have just upper and lower elevation, missing cumulonimbus type.
+
+Icing is according to the interpretation guide styled in the same way as cumulonimbus AND turbulences, sometimes even having the info in the same textbox (in the upper part turbulence info, in the lower icing). Also in the characteristics is written, than test plots are using zig-zag lines. Currently it is done in two styles with two boxes, but is shall be discussed. Also the degree of icing is not present in data (based on the degree, graphic symbol is used).
+
+Further reading (windbarbs):
+https://geoserver.geosolutionsgroup.com/edu/en/multidim/accessing_multidim/rtx/wind_barbs.html
+
+YSLD, a yaml style reference: https://docs.geoserver.org/2.21.x/en/user/styling/ysld/index.html
+
+What is needed to do:
+* group cumulonimbus, icing and turbulence in overlaps
+* add values corresponding to the codelist values, in order to define symbols (e.g. http://codes.wmo.int/bufr4/codeflag/0-20-041/4 ->  moderate-icing). It cannot use spaces, preferably alphanumerics and "-" or "_".

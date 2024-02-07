@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StyledLayerDescriptor xmlns="http://www.opengis.net/sld"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:ogc="http://www.opengis.net/ogc"
+    xsi:schemaLocation="http://www.opengis.net/sld https://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd" version="1.0.0">
+    
+    <NamedLayer>
+        <Name>tropicalCyclone</Name>
+        <UserStyle>
+            <Name>TropicalCyclone</Name>
+            <FeatureTypeStyle>
+                <Name>TropicalCyclone</Name>
+                <Rule>
+                    <Name>TropicalCyclone</Name>
+                    <PointSymbolizer>
+                        <Graphic>
+                            <ExternalGraphic>
+                                <OnlineResource xlink:type="simple" xlink:href="file://${code}.png"/><!-- code has a space character, which is not allowed for a file name to be uploaded to geoserver. We should change code value from NH TC to NHTC and from SH TC to SHTC -->
+                                <Format>image/png</Format>
+                            </ExternalGraphic>
+                            <Size>15</Size>
+                        </Graphic>
+                    </PointSymbolizer>
+                </Rule>                
+            </FeatureTypeStyle>
+        </UserStyle>
+    </NamedLayer>    
+</StyledLayerDescriptor>

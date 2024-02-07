@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StyledLayerDescriptor xmlns="http://www.opengis.net/sld"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ogc="http://www.opengis.net/ogc"
+    xsi:schemaLocation="http://www.opengis.net/sld https://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd"
+    version="1.0.0">
+    
+    <NamedLayer>
+        <!-- reference to a named layer in the server catalogue -->
+        <Name>icing</Name>
+        <UserStyle>
+            <Name>icing</Name>
+            <FeatureTypeStyle>
+                <Name>icing</Name>
+                <Rule>
+                    <LineSymbolizer>
+                        <Geometry>
+                            <ogc:PropertyName>geom_boundary</ogc:PropertyName>
+                        </Geometry>
+                        <Stroke>
+                            <GraphicStroke>
+                                <Graphic>
+                                    <!--<Mark>
+                                        <WellKnownName>wkt://CIRCULARSTRING(0 0, -1 -1, 2 0)</WellKnownName>
+                                        <Stroke>
+                                            <CssParameter name="stroke">#1d1414</CssParameter>
+                                            <CssParameter name="stroke-width">4</CssParameter>
+                                        </Stroke>
+                                    </Mark>-->
+                                    <ExternalGraphic>
+                                        <OnlineResource xlink:type="simple" xlink:href="file://cumulonimbus-segment.png"/><!-- add opposite shape -->
+                                        <Format>image/png</Format>
+                                    </ExternalGraphic>
+                                    <Size>10</Size>
+                                </Graphic>
+                            </GraphicStroke>
+                        </Stroke>
+                    </LineSymbolizer>
+                    <PointSymbolizer>
+                        <Geometry>
+                            <ogc:Function name="centroid">
+                                <ogc:PropertyName>geom_label</ogc:PropertyName>
+                            </ogc:Function>
+                        </Geometry>
+                        <Graphic>
+                            <!-- graphic must be based on the degree value -->
+                            <!-- preferably add new attribute with degree label without spaces (e.g. moderate-icing) -->
+                            <ExternalGraphic>
+                                <OnlineResource xlink:type="simple" xlink:href="file://moderate-icing.png"/>
+                                <Format>image/jpeg</Format>
+                            </ExternalGraphic>
+                            <Size>13</Size>
+                        </Graphic>
+                    </PointSymbolizer>
+                    <TextSymbolizer>
+                        <Geometry>
+                            <ogc:Function name="centroid">
+                                <ogc:PropertyName>geom_label</ogc:PropertyName>
+                            </ogc:Function>
+                        </Geometry>
+                        <Label>
+                            <!-- elevation_upper -->
+                            <ogc:Function name="numberFormat"><!-- formats number -->
+                                <ogc:Literal>###</ogc:Literal>
+                                <ogc:Div>
+                                    <ogc:PropertyName>elevation_upper</ogc:PropertyName>
+                                    <ogc:Literal>100</ogc:Literal>
+                                </ogc:Div>
+                            </ogc:Function><![CDATA[
+]]>
+                            <!-- elevation_lower -->
+                            <ogc:Function name="if_then_else">
+                                <ogc:Function name="isNull">
+                                    <ogc:PropertyName>elevation_lower</ogc:PropertyName>
+                                </ogc:Function>
+                                <ogc:Literal>XXX</ogc:Literal>
+                                <ogc:Function name="numberFormat"><!-- formats number -->
+                                    <ogc:Literal>###</ogc:Literal>
+                                    <ogc:Div>
+                                        <ogc:PropertyName>elevation_lower</ogc:PropertyName>
+                                        <ogc:Literal>100</ogc:Literal>
+                                    </ogc:Div>
+                                </ogc:Function>
+                            </ogc:Function>
+                        </Label>
+                        <Font>
+                            <CssParameter name="font-family">Arial</CssParameter>
+                            <CssParameter name="font-size">12</CssParameter>
+                            <CssParameter name="font-style">normal</CssParameter>
+                            <CssParameter name="font-weight">bold</CssParameter>
+                        </Font>
+                        <LabelPlacement>
+                            <PointPlacement>
+                                <AnchorPoint>
+                                    <AnchorPointX>0.5</AnchorPointX>
+                                    <AnchorPointY>0.5</AnchorPointY>
+                                </AnchorPoint>
+                                <Displacement>
+                                    <DisplacementX>40</DisplacementX>
+                                    <DisplacementY>0</DisplacementY>
+                                </Displacement>
+                            </PointPlacement>
+                        </LabelPlacement>
+                        <!-- all in a box -->
+                        <Graphic>
+                            <Mark>
+                                <WellKnownName>Square</WellKnownName>
+                                <Fill>
+                                    <CssParameter name="fill">#ffffff</CssParameter>
+                                    <CssParameter name="fill-opacity">0</CssParameter>
+                                </Fill>
+                                <Stroke>
+                                    <CssParameter name="stroke">#000000</CssParameter>
+                                    <CssParameter name="stroke-width">1</CssParameter>
+                                </Stroke>  
+                            </Mark>
+                        </Graphic>
+                        <VendorOption name="graphic-resize">stretch</VendorOption>
+                        <VendorOption name="graphic-margin">10 20 10 40</VendorOption><!-- margin are set to contain also the image -->
+                    </TextSymbolizer>
+                    <!-- leading arrow from polygon to infobox -->
+                    <!-- FROM polygon TO infobox -->
+                    <!-- only if centroid outside of polygon -->
+                    <LineSymbolizer>
+                        <Geometry>
+                            <ogc:PropertyName>geom_label_leading</ogc:PropertyName>
+                        </Geometry>
+                        <Stroke>
+                            <CssParameter name="stroke">#1d1414</CssParameter>
+                            <CssParameter name="stroke-width">1</CssParameter>
+                        </Stroke>
+                    </LineSymbolizer>
+                    <PointSymbolizer>
+                        <Geometry>
+                            <ogc:Function name="endPoint">
+                                <ogc:PropertyName>geom_leading_point</ogc:PropertyName><!-- name of the geometry column in geoserver -->
+                            </ogc:Function>
+                        </Geometry>
+                        <Graphic>
+                            <Mark>
+                                <WellKnownName>shape://carrow</WellKnownName><!-- oarrow = open arrow, carrow = closed arrow -->
+                                <Fill>
+                                    <CssParameter name="fill">#1d1414</CssParameter>
+                                    <CssParameter name="fill-opacity">0.5</CssParameter>
+                                </Fill>
+                                <Stroke>
+                                    <CssParameter name="stroke">#1d1414</CssParameter>
+                                    <CssParameter name="stroke-width">1</CssParameter>
+                                </Stroke>
+                            </Mark>
+                            <Size>20</Size>
+                            <Rotation>
+                                <ogc:Function name="endAngle">
+                                    <ogc:PropertyName>geom</ogc:PropertyName>
+                                </ogc:Function>
+                            </Rotation>
+                        </Graphic>
+                    </PointSymbolizer>
+                </Rule>
+            </FeatureTypeStyle>
+        </UserStyle>
+    </NamedLayer>
+</StyledLayerDescriptor>

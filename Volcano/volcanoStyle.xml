@@ -20,7 +20,7 @@
                                 <OnlineResource xlink:type="simple" xlink:href="file://volcano.png"/>
                                 <Format>image/png</Format>
                             </ExternalGraphic>
-                            <Size>30</Size>
+                            <Size>25</Size>
                         </Graphic>
                     </PointSymbolizer>
                     <TextSymbolizer>
@@ -31,7 +31,7 @@
                         </Label>
                         <Font>
                             <CssParameter name="font-family">Arial</CssParameter>
-                            <CssParameter name="font-size">12</CssParameter>
+                            <CssParameter name="font-size">10</CssParameter>
                             <CssParameter name="font-style">normal</CssParameter>
                             <CssParameter name="font-weight">bold</CssParameter>
                         </Font>
@@ -43,7 +43,7 @@
                                 </AnchorPoint>
                                 <Displacement>
                                     <DisplacementX>0</DisplacementX>
-                                    <DisplacementY>-30</DisplacementY>
+                                    <DisplacementY>-15</DisplacementY>
                                 </Displacement>
                             </PointPlacement>
                         </LabelPlacement>
@@ -61,7 +61,7 @@
                             </Mark>
                         </Graphic>
                         <VendorOption name="graphic-resize">stretch</VendorOption>
-                        <VendorOption name="graphic-margin">40 6 15 6</VendorOption><!-- margin are set to contain also the image -->
+                        <VendorOption name="graphic-margin">30 6 15 6</VendorOption><!-- margin are set to contain also the image -->
                     </TextSymbolizer>                    
                 </Rule>
             </FeatureTypeStyle>

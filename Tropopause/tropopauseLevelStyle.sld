@@ -52,6 +52,7 @@
                         </Graphic>
                         <VendorOption name="graphic-resize">stretch</VendorOption>
                         <VendorOption name="graphic-margin">2</VendorOption>
+                        <VendorOption name="repeat">350</VendorOption>
                     </TextSymbolizer>
                 </Rule>
             </FeatureTypeStyle>

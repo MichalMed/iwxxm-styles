@@ -18,8 +18,8 @@
                     <LineSymbolizer>
                         <Stroke>
                             <CssParameter name="stroke">#1d1414</CssParameter><!-- color -->
-                            <CssParameter name="stroke-width">4</CssParameter>
-                            <CssParameter name="stroke-dasharray">30 10</CssParameter>
+                            <CssParameter name="stroke-width">3</CssParameter>
+                            <CssParameter name="stroke-dasharray">20 7</CssParameter>
                         </Stroke>
                     </LineSymbolizer>
                     <TextSymbolizer>
@@ -57,6 +57,8 @@
                         <VendorOption name="graphic-margin">2</VendorOption>
                         <VendorOption name="repeat">500</VendorOption>
                         <VendorOption name="maxDisplacement">20</VendorOption>
+                        <VendorOption name="conflictResolution">false</VendorOption>
+                        
                     </TextSymbolizer>
                 </Rule>
             </FeatureTypeStyle>

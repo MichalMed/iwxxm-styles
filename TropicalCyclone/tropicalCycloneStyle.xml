@@ -14,6 +14,7 @@
                 <Name>TropicalCyclone</Name>
                 <Rule>
                     <Name>TropicalCycloneNorth</Name>
+                    <Title>Tropical cyclone on North Hemisphere</Title>
                     <ogc:Filter>
                         <ogc:PropertyIsEqualTo><!-- north hemisphere -->
                             <ogc:PropertyName>code</ogc:PropertyName>
@@ -26,12 +27,39 @@
                                 <OnlineResource xlink:type="simple" xlink:href="file://NHTC.png"/>
                                 <Format>image/png</Format>
                             </ExternalGraphic>
-                            <Size>15</Size>
+                            <Size>30</Size>
                         </Graphic>
                     </PointSymbolizer>
+                    <TextSymbolizer>
+                        <Label>
+                            <ogc:Function name="getY"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                            <ogc:Literal>N, </ogc:Literal>
+                            <ogc:Function name="getX"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                            <!-- add conditions positive/negative W/E -->
+                        </Label>
+                        <Font>
+                            <CssParameter name="font-family">Arial</CssParameter>
+                            <CssParameter name="font-size">10</CssParameter>
+                            <CssParameter name="font-style">normal</CssParameter>
+                            <CssParameter name="font-weight">bold</CssParameter>
+                        </Font>
+                        <LabelPlacement>
+                            <PointPlacement>
+                                <AnchorPoint>
+                                    <AnchorPointX>0.5</AnchorPointX>
+                                    <AnchorPointY>1</AnchorPointY>
+                                </AnchorPoint>
+                                <Displacement>
+                                    <DisplacementX>0</DisplacementX>
+                                    <DisplacementY>-15</DisplacementY>
+                                </Displacement>
+                            </PointPlacement>
+                        </LabelPlacement>
+                    </TextSymbolizer>
                 </Rule>
                 <Rule>
                     <Name>TropicalCycloneSouth</Name>
+                    <Title>Tropical cyclone on South Hemisphere</Title>
                     <ogc:Filter>
                         <ogc:PropertyIsEqualTo><!-- north hemisphere -->
                             <ogc:PropertyName>code</ogc:PropertyName>
@@ -44,9 +72,35 @@
                                 <OnlineResource xlink:type="simple" xlink:href="file://SHTC.png"/>
                                 <Format>image/png</Format>
                             </ExternalGraphic>
-                            <Size>15</Size>
+                            <Size>30</Size>
                         </Graphic>
                     </PointSymbolizer>
+                    <TextSymbolizer>
+                        <Label>
+                            <ogc:Function name="getY"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                            <ogc:Literal>S, </ogc:Literal>
+                            <ogc:Function name="getX"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                            <!-- add conditions positive/negative W/E -->
+                        </Label>
+                        <Font>
+                            <CssParameter name="font-family">Arial</CssParameter>
+                            <CssParameter name="font-size">10</CssParameter>
+                            <CssParameter name="font-style">normal</CssParameter>
+                            <CssParameter name="font-weight">bold</CssParameter>
+                        </Font>
+                        <LabelPlacement>
+                            <PointPlacement>
+                                <AnchorPoint>
+                                    <AnchorPointX>0.5</AnchorPointX>
+                                    <AnchorPointY>1</AnchorPointY>
+                                </AnchorPoint>
+                                <Displacement>
+                                    <DisplacementX>0</DisplacementX>
+                                    <DisplacementY>-15</DisplacementY>
+                                </Displacement>
+                            </PointPlacement>
+                        </LabelPlacement>
+                    </TextSymbolizer>
                 </Rule>                
             </FeatureTypeStyle>
         </UserStyle>

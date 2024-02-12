@@ -27,7 +27,9 @@
                         <Label>
                             <ogc:PropertyName>name</ogc:PropertyName><![CDATA[
 ]]>
-                            <ogc:PropertyName>geom</ogc:PropertyName>
+                            <!-- add conditions positive/negative  W/E N/S -->
+                            <ogc:Function name="getY"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                            <ogc:Function name="getX"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
                         </Label>
                         <Font>
                             <CssParameter name="font-family">Arial</CssParameter>
@@ -61,7 +63,7 @@
                             </Mark>
                         </Graphic>
                         <VendorOption name="graphic-resize">stretch</VendorOption>
-                        <VendorOption name="graphic-margin">30 6 15 6</VendorOption><!-- margin are set to contain also the image -->
+                        <VendorOption name="graphic-margin">30 3 15 6</VendorOption><!-- margin are set to contain also the image -->
                     </TextSymbolizer>                    
                 </Rule>
             </FeatureTypeStyle>

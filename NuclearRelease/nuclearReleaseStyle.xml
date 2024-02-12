@@ -20,14 +20,16 @@
                                 <OnlineResource xlink:type="simple" xlink:href="file://nuclearRelease.png"/>
                                 <Format>image/png</Format>
                             </ExternalGraphic>
-                            <Size>25</Size>
+                            <Size>30</Size>
                         </Graphic>
                     </PointSymbolizer>
                     <TextSymbolizer>
                         <Label>
                             <ogc:PropertyName>site_name</ogc:PropertyName>    <![CDATA[
 ]]>                      
-                            <ogc:PropertyName>geom</ogc:PropertyName><!-- we need attribute with Lat/Lon representation in this form: 0.1S 120.1W -->
+                            <!-- add conditions positive/negative  W/E N/S -->
+                            <ogc:Function name="getY"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                            <ogc:Function name="getX"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
                         </Label>
                         <Font>
                             <CssParameter name="font-family">Arial</CssParameter>
@@ -43,7 +45,7 @@
                                 </AnchorPoint>
                                 <Displacement>
                                     <DisplacementX>0</DisplacementX>
-                                    <DisplacementY>-30</DisplacementY>
+                                    <DisplacementY>-15</DisplacementY>
                                 </Displacement>
                             </PointPlacement>
                         </LabelPlacement>
@@ -61,7 +63,7 @@
                             </Mark>
                         </Graphic>
                         <VendorOption name="graphic-resize">stretch</VendorOption>
-                        <VendorOption name="graphic-margin">45 6 15 6</VendorOption><!-- margin are set to contain also the image -->
+                        <VendorOption name="graphic-margin">35 6 10 6</VendorOption><!-- margin are set to contain also the image -->
                     </TextSymbolizer>                    
                 </Rule>
             </FeatureTypeStyle>

@@ -35,6 +35,7 @@
                             </GraphicStroke>
                         </Stroke>
                     </LineSymbolizer>
+
                     <PointSymbolizer>
                         <Geometry>
                             <ogc:Function name="centroid">
@@ -120,7 +121,7 @@
                     <!-- leading arrow from polygon to infobox -->
                     <!-- FROM polygon TO infobox -->
                     <!-- only if centroid outside of polygon -->
-                    <LineSymbolizer>
+                    <!--<LineSymbolizer>
                         <Geometry>
                             <ogc:PropertyName>geom_label_leading</ogc:PropertyName>
                         </Geometry>
@@ -132,12 +133,12 @@
                     <PointSymbolizer>
                         <Geometry>
                             <ogc:Function name="endPoint">
-                                <ogc:PropertyName>geom_leading_point</ogc:PropertyName><!-- name of the geometry column in geoserver -->
+                                <ogc:PropertyName>geom_leading_point</ogc:PropertyName><!-\- name of the geometry column in geoserver -\->
                             </ogc:Function>
                         </Geometry>
                         <Graphic>
                             <Mark>
-                                <WellKnownName>shape://carrow</WellKnownName><!-- oarrow = open arrow, carrow = closed arrow -->
+                                <WellKnownName>shape://carrow</WellKnownName><!-\- oarrow = open arrow, carrow = closed arrow -\->
                                 <Fill>
                                     <CssParameter name="fill">#1d1414</CssParameter>
                                     <CssParameter name="fill-opacity">0.5</CssParameter>
@@ -154,7 +155,7 @@
                                 </ogc:Function>
                             </Rotation>
                         </Graphic>
-                    </PointSymbolizer>
+                    </PointSymbolizer>-->
                 </Rule>
             </FeatureTypeStyle>
         </UserStyle>

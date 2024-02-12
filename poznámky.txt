@@ -25,5 +25,10 @@ https://geoserver.geosolutionsgroup.com/edu/en/multidim/accessing_multidim/rtx/w
 YSLD, a yaml style reference: https://docs.geoserver.org/2.21.x/en/user/styling/ysld/index.html
 
 What is needed to do:
-* group cumulonimbus, icing and turbulence in overlaps
 * add values corresponding to the codelist values, in order to define symbols (e.g. http://codes.wmo.int/bufr4/codeflag/0-20-041/4 ->  moderate-icing). It cannot use spaces, preferably alphanumerics and "-" or "_".
+
+Legend:
+http://localhost:8085/geoserver/iwxxm/wms?service=WMS&version=1.1.0&request=GetLegendGraphic&layer=iwxxm:turbulence_table&width=100&height=100&format=image/png
+
+Stylování podle zoomu:
+https://docs.geoserver.org/main/en/user/styling/sld/cookbook/lines.html#zoom-based-line

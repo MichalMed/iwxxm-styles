@@ -28,7 +28,23 @@
                             <ogc:PropertyName>site_name</ogc:PropertyName>    <![CDATA[
 ]]>                      
                             <!-- add conditions positive/negative  W/E N/S -->
-                            <ogc:Function name="getY"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                            <ogc:Function name="if_then_else">
+                                <ogc:Function name="lessThan">
+                                    <ogc:Function name="getY"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                                    <ogc:Literal>0</ogc:Literal>
+                                </ogc:Function>
+                                <ogc:Function name="Concatenate">
+                                    <ogc:Mul>
+                                        <ogc:Literal>-1</ogc:Literal>
+                                        <ogc:Function name="getY"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                                    </ogc:Mul>
+                                    <ogc:Literal>S, </ogc:Literal>
+                                </ogc:Function>
+                                <ogc:Function name="Concatenate">
+                                    <ogc:Function name="getY"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                                    <ogc:Literal>N, </ogc:Literal>
+                                </ogc:Function>
+                            </ogc:Function>
                             <ogc:Function name="getX"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
                         </Label>
                         <Font>

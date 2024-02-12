@@ -27,9 +27,40 @@
                         <Label>
                             <ogc:PropertyName>name</ogc:PropertyName><![CDATA[
 ]]>
-                            <!-- add conditions positive/negative  W/E N/S -->
-                            <ogc:Function name="getY"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
-                            <ogc:Function name="getX"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                            <ogc:Function name="if_then_else">
+                                <ogc:Function name="lessThan">
+                                    <ogc:Function name="getY"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                                    <ogc:Literal>0</ogc:Literal>
+                                </ogc:Function>
+                                <ogc:Function name="Concatenate">
+                                    <ogc:Mul>
+                                        <ogc:Literal>-1</ogc:Literal>
+                                        <ogc:Function name="getY"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                                    </ogc:Mul>
+                                    <ogc:Literal> S, </ogc:Literal>
+                                </ogc:Function>
+                                <ogc:Function name="Concatenate">
+                                    <ogc:Function name="getY"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                                    <ogc:Literal> N, </ogc:Literal>
+                                </ogc:Function>
+                            </ogc:Function>
+                            <ogc:Function name="if_then_else">
+                                <ogc:Function name="lessThan">
+                                    <ogc:Function name="getX"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                                    <ogc:Literal>0</ogc:Literal>
+                                </ogc:Function>
+                                <ogc:Function name="Concatenate">
+                                    <ogc:Mul>
+                                        <ogc:Literal>-1</ogc:Literal>
+                                        <ogc:Function name="getX"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                                    </ogc:Mul>
+                                    <ogc:Literal> W</ogc:Literal>
+                                </ogc:Function>
+                                <ogc:Function name="Concatenate">
+                                    <ogc:Function name="getX"><ogc:PropertyName>geom</ogc:PropertyName></ogc:Function>
+                                    <ogc:Literal> E</ogc:Literal>
+                                </ogc:Function>
+                            </ogc:Function>
                         </Label>
                         <Font>
                             <CssParameter name="font-family">Arial</CssParameter>
@@ -63,7 +94,7 @@
                             </Mark>
                         </Graphic>
                         <VendorOption name="graphic-resize">stretch</VendorOption>
-                        <VendorOption name="graphic-margin">30 3 15 6</VendorOption><!-- margin are set to contain also the image -->
+                        <VendorOption name="graphic-margin">30 6 15 6</VendorOption><!-- margin are set to contain also the image -->
                     </TextSymbolizer>                    
                 </Rule>
             </FeatureTypeStyle>
